@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Medicine</title>
+
+        <style>
+            table, th, td {
+                border: 1px solid #C69A3A;
+                margin-left: 520px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        .headings{
+            text-align: center; 
+            color: #C69A3A;"
+        }
+
+        </style>
+    </head>
+    <body>
+        <a href="/">Back</a>
+        <br>
+        <h1 class="headings">PHARMACY</h1>
+        <h2 class="headings">Add Medicine</h2>
+        <form action="/add-medicine" method="post">
+            <input style="border:1px solid #c69a3a; margin-left: 570px;" type="text" name="med" placeholder="Medicine Name">
+            <br><br>
+            <input style="background-color: #C69A3A; color: black; margin-left: 600px;" type="submit" value="Add Medicine">
+        </form>
+
+        <br><br>
+
+        <table>
+            <tr>
+                <th>MID</th>
+                <th>Medicine Name</th>
+            </tr>
+            
+            {% for med in medicines %}
+                <tr>
+                    <td>{{ med.id }}</td>
+                    <td>{{ med.name }}</td>
+                    <td><a href="/delete-medicine/{{ med.id }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

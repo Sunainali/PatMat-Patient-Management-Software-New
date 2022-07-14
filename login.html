@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>User Login</title>
+        <link rel="stylesheet" href="/static/login.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+      <h1 style="color:bisque; text-align:center ; ">Welcome to PatMat</h1>
+      <div class="login-page">
+        <div class="form"> 
+          <form class="register-form" action="/signup" method="post">
+            <input name="username" type="text" placeholder="Name"/>
+            <input name="email" type="email" placeholder="E-mail"/>
+            <input name="password" type="password" placeholder="Password"/>
+            <button>sign up</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+          </form>
+          <form class="login-form" action="/login" method="post">
+            <input name="email" type="email" placeholder="E-mail"/>
+            <input name="password" type="password" placeholder="Password"/>
+            <button>login</button>
+            <p class="message">Not registered? <a href="#">Sign up</a></p>
+            <p class="message">Are you an admin? <a href="/admin">Sign in as admin</a></p>
+          </form>
+        </div>
+      </div>
+
+      <script>
+        $('.message a').click(function(){
+          $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });
+
+        if ('{{ message }}' != '') {
+          alert('{{ message }}');
+        }
+      </script>
+    </body>
+</html>

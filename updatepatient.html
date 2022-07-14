@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Update Patient</title>
+        <style>
+            .form{
+                margin-left: 550px;
+            }
+            .edit{
+                border: 1px solid #c69a3a;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                padding: 7px 10px 10px 7px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <a href="/patients">Back</a>
+        
+        <div class="update_patient">
+            <h1 style="color: #c69a3a; text-align:center">Edit Patient Information</h1>
+            <form class="form" action="/update-patient/{{ patient.id }}" method="post">
+                <input class="edit" type="text" name="fname" placeholder="First Name" value="{{ patient.firstname }}">
+
+                <br><br>
+
+                <input class="edit" type="text" name="lname" placeholder="last Name" value="{{ patient.lastname }}">
+
+                <br><br>
+
+                {% if patient.gender == 'M' %}
+                    <input type="radio" id="male" name="gender" value="M" checked>
+                {% else %}
+                    <input type="radio" id="male" name="gender" value="M">
+                {% endif %}
+                <label for="male">Male</label>
+
+                {% if patient.gender == 'F' %}
+                    <input type="radio" id="female" name="gender" value="F" checked>
+                {% else %}
+                    <input type="radio" id="female" name="gender" value="F">
+                {% endif %}
+                <label for="female">Female</label>
+
+                <br><br>
+                <label for="dob">Date Of Birth</label>
+                <input class="edit" type="date" id="dob" name="dob" value="{{ patient.dob.strftime('%Y-%m-%d') }}">
+               
+
+                <br><br>
+                <label for="joiningdate">Joining Date</label>
+                <input class="edit" type="date" id="joiningdate" name="joiningdate" value="{{ patient.joiningdate.strftime('%Y-%m-%d') }}">
+                
+
+                <br><br>
+
+                <input style="margin-left: 100px; background-color: #C69A3A; 
+                            color: black; 
+                            padding: 6px 20px 6px 20px;" 
+                            type="submit" value="Save" >
+            </form>
+        </div>
+
+    </body>
+
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Home</title>
+        <style>
+            body{}
+            h1{
+                color: #C69A3A;
+                text-align: center;
+                font-size: 50px;
+               
+            }
+            li{
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome {{ curr_user.name }}</h1>
+        <br>
+        <ol>
+            <li><a href="/patients">Patients</a></li>
+            <li><a href="/medicine">Medicine</a></li>
+        </ol>
+
+        <br><br><br>
+        <a style=" color: black; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" href="/logout">Log Out</a>
+    </body>
+</html>
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Admin Panel</title>
+        <style>
+            table, th, td {
+                border: 1px solid #c69a3a;
+                margin-left: 550px;
+            }
+            .heading{
+                color: #c69a3a;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="heading">Manage Users</h1>
+        <h2 class="heading">Requests pending approval</h2>
+        <table>
+            <tr>
+                <th>UID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            {% for user in pending_approvals %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><a href="/admin/panel/approve-{{ user.id }}">Approve</a></td>
+                    <td><a href="/admin/panel/reject-{{ user.id }}">Reject</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

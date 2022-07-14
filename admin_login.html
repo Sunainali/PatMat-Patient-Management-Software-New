@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Admin Login</title>
+        <link rel="stylesheet" href="/static/login.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+      <div class="login-page">
+        <div class="form">
+          <form class="login-form" action="/admin" method="post">
+            <input name="email" type="email" placeholder="E-mail"/>
+            <input name="password" type="password" placeholder="Password"/>
+            <button>login</button>
+            <p class="message"><a href="/login">Sign in as user</a></p>
+          </form>
+        </div>
+      </div>
+
+      <script>
+        if ('{{ error_message }}' != '') {
+          alert('{{ error_message }}');
+        }
+      </script>
+    </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Patient Info</title>
+
+        <style>
+            table, th, td {
+                border: 1px solid #C69A3A;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .patient_info{
+                margin-left: 500px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .prescription{
+                margin-left: 500px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+           
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="patient_info">
+            <a href="/patients">Back</a>
+            
+            <br>
+
+            <h1 style="color:#C69A3A"> Patient Info </h1>
+
+            <br><br>
+
+            PID: {{ patient.id }}
+            <br>
+            First Name: {{ patient.firstname }}
+            <br>
+            Last Name: {{ patient.lastname }}
+            <br>
+            Gender: {{ patient.gender }}
+            <br>
+            Date of Birth: {{ patient.dob }}
+            <br>
+            Joining Date: {{ patient.joiningdate }}
+        </div>
+
+        <div class="prescription">
+            <h1 style="color:#C69A3A" >Prescription</h1>
+            
+            <h2 style="color:#C69A3A" >Add Medicine</h2>
+            <form action="/prescribe/{{ patient.id }}" method="post">
+                <select name="prescribed_med">
+                    {% for med in all_medicine %}
+                        <option value="{{ med.id }}">{{ med.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <br><br>
+
+                <input style="color: #C69A3A; border:1px solid #C69A3A; padding: 7px 10px 10px 7px" type="text" name="med_time" placeholder="Time for Medicine">
+                
+                <br><br>
+
+                <input style="color: #C69A3A; border:1px solid #C69A3A; padding: 7px 10px 10px 7px" ype="text" name="med_dosage" placeholder="Dosage for Medicine">
+
+                <br><br>
+
+                <input style="background-color:#C69A3A; color: black;" type="submit" value="Prescribe">
+            </form>
+
+            <br><br><br>
+
+            <h2 style="color:#C69A3A" >Suggested Medicine</h2>
+            <table>
+                <tr>
+                    <th>Medicine</th>
+                    <th>Time</th>
+                    <th>Dosage</th>
+                </tr>
+
+                {% for pres in patient.prescriptions %}
+                    <tr>
+                        <td>{{ pres.medicine.name }}</td>
+                        <td>{{ pres.time }}</td>
+                        <td>{{ pres.dosage }}</td>
+                        <td><a href="/show-patient/{{ patient.id }}/delete-prescription/{{ pres.id }}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
+    </body>
+</html>

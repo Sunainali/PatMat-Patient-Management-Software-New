@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Patients</title>
+        
+        <style>
+            table, th, td {
+                border: 1px solid #C69A3A;
+                margin-left: 400px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            h1{
+                color: #C69A3A;
+                text-align: center;
+
+            }
+            .form{
+                margin-left: 550px;
+                margin-top: 50px;
+            }
+            .edit{
+                     border: 1px solid #C69A3A; 
+                     padding: 7px 10px 10px 7px;"
+            }
+            .button{
+                border: 1px solid #C69A3A; 
+                padding: 6px 20px 6px 20px;
+                background-color: #C69A3A;
+                margin-left: 50px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="add_patient">
+            <a href="/">Back</a>
+            <br>
+            <h1 style="color: #C69A3A">Manage Patients</h1>
+            <form class="form" action="/add-patient" method="post">
+                <input class="edit" type="text" name="fname" placeholder="First Name">
+                <br><br>
+                <input class="edit" type="text" name="lname" placeholder="last Name">
+                <br><br>
+                <input type="radio" id="male" name="gender" value="M">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="F">
+                <label for="female">Female</label>
+                <br><br>
+                <label for="dob">Date Of Birth</label>
+                <input class="edit"  type="date" id="dob" name="dob">
+                <br><br>
+                <label for="joiningdate">Joining Date</label>
+                <input class="edit"  type="date" id="joiningdate" name="joiningdate">
+                
+                <br><br>
+                <input class="button" type="submit" value="Save">
+            </form>
+        </div>
+
+        <br><br>
+
+        <div class="all_patients">
+            <table>
+                <tr>
+                    <th>PID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+                
+                {% for patient in patients %}
+                    <tr>
+                        <td>{{ patient.id }}</td>
+                        <td>{{ patient.firstname }}</td>
+                        <td>{{ patient.lastname }}</td>
+                        <td><a href="/show-patient/{{ patient.id }}">Show</a></td>
+                        <td><a href="/update-patient/{{ patient.id }}">Update</a></td>
+                        <td><a href="/delete-patient/{{ patient.id }}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
+
+        <!--<br><br>
+
+        <button><a href="/get-all-patients">Get All Patients</a></button>-->
+    </body>
+
+</html>
+
