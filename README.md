@@ -112,6 +112,7 @@ def admin():
         ).first()
 
 if the user not an admin will try to login into admin area the below function will be called:
+ 
  if user:
             login_user(user)
             return redirect('/admin/panel')
@@ -143,19 +144,19 @@ def admin_panel():
     )
 
 if the admin wants to approve the permission for the signup user the below function will be called:
+
 def approve_user(uid):
     user = User.query.get(uid)
     user.status = True
     db.session.commit()
-
     return redirect('/admin/panel')
     
 if admins wants to rejects the permission the below function will be called:
+
 def reject_user(uid):
     user = User.query.get(uid)
     db.session.delete(user)
     db.session.commit()
-
     return redirect('/admin/panel').
  
  
