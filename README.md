@@ -123,7 +123,7 @@ if the user not an admin will try to login into admin area the below function wi
                 error_message='Incorrect Username or Password'
             )
             
- If the main admin will login below function will be called:
+the main admin will login below function will be called:
  
  if current_user.is_authenticated:
         return redirect('/admin/panel')
@@ -143,7 +143,7 @@ def admin_panel():
         pending_approvals=pending_approvals,
     )
 
-if the admin wants to approve the permission for the signup user the below function will be called:
+the admin wants to approve the permission for the signup user the below function will be called:
 
 def approve_user(uid):
     user = User.query.get(uid)
@@ -151,7 +151,7 @@ def approve_user(uid):
     db.session.commit()
     return redirect('/admin/panel')
     
-if admins wants to rejects the permission the below function will be called:
+admins wants to rejects the permission the below function will be called:
 
 def reject_user(uid):
     user = User.query.get(uid)
